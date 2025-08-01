@@ -864,7 +864,10 @@ fb_api_json_chk(FbApi *api, gconstpointer data, gssize size, JsonNode **node)
     priv = api->priv;
 
     if (G_UNLIKELY(size == 0)) {
-        fb_api_error(api, FB_API_ERROR_GENERAL, _("Empty JSON data"));
+        fb_util_debug(FB_UTIL_DEBUG_INFO, "Received empty JSON data. Ignoring.\n");
+        if (node != NULL) {
+            *node = NULL;
+        }
         return FALSE;
     }
 
