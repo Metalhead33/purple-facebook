@@ -2851,7 +2851,7 @@ gboolean purple_http_response_is_successful(PurpleHttpResponse *response)
 
 	/* TODO: HTTP/1.1 100 Continue */
 
-	if (code / 100 == 2 || code == 410)
+	if (code / 100 == 2 || code == 410 || code == 405)
 		return TRUE;
 
 	return FALSE;
